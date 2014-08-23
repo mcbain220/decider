@@ -1,0 +1,29 @@
+
+<div class='container' style='padding-bottom: 20px;'>
+	<h2>Priorities</h2>
+</div>
+
+<h4>Hello, <%=session[:name] %>!  Let's get started on helping you make a decision on where to move!</h4>
+<br>
+<br>
+
+<p>Below are the most common factors in a moving decision.  Place them in order of importance by dragging and dropping, with your highest priority being placed at the top:</p>
+<br>
+<br>
+
+<ul id="sortable2" class='btn-group-vertical'>
+  	<li class='btn btn-default' id="id_1@Location">Weather</li>
+  	<li class='btn btn-default' id="id_2@Affordability">Affordability</li>
+  	<li class='btn btn-default' id="id_3@Food">Food</li>
+  	<li class='btn btn-default' id="id_4@Proximity">Proximity to Family/Friends</li>
+  	<li class='btn btn-default' id="id_5@Entertainment">Entertainment</li>
+</ul>
+
+<br>
+<br>
+<form action='step_1a' method='get'>
+	<input type='submit' class='btn-primary btn-large'>
+</form>
+
+
+

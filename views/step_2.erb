@@ -1,0 +1,31 @@
+<div class='container' style='padding-bottom: 20px;'>
+	<h2>Ranking</h2>
+</div>
+
+OK, <%=session[:name] %>! Now rank your options in order of strongest to weakest for each priority:
+<br>
+<br>
+
+<ul class='unstyled'>
+<% n = 1 %>	
+<% session[:sorted_priorities].each do | key, val|%>
+  <li><h3><%= key.split('@')[1] + " - Rank #{val}"%></h3>
+     <ul id='<%= 'sortable_options_' + n.to_s %>' class='btn-group-vertical'>
+     	<% session[:options].each do | key2, var2| %>
+     		<li class='btn btn-default' id='<%= n.to_s + '_' + key2 %>'><%= var2 %></li>
+     	<% end %>
+     <% n += 1 %>
+     </ul>
+  </li>
+  <% end %>
+ </ul>
+
+<br>
+<br>
+
+ Once you are done sorting, hit submit:
+ <br>
+ <br>
+ <form action='/calculate' method='get'>
+	<input type='submit' class='btn-primary btn-large'>
+</form>

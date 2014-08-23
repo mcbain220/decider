@@ -1,0 +1,10 @@
+
+.centered {
+	margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+}
+
+.container {
+	padding-top: 20px;
+}

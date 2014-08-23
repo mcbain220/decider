@@ -1,0 +1,42 @@
+<div class='container' style='padding-bottom: 20px;'>
+	<h2>Results</h2>
+</div>
+
+<div class='container' style='padding-bottom: 20px;'>
+<%=session[:name] %>, based on how you ranked your priorities and how you ranked your options against those priorities, it appears that <strong><%=decider(session[:final_scores])%></strong> is the choice!
+</div>
+
+<div class='container' style='padding-bottom: 20px;'>
+<table class='table table-striped'>
+	<tr>
+	<td></td>	
+	<% session[:options].each do |key, val| %>
+		<%= "<td><strong>#{val}</strong></td>" %>
+		<%end%>
+	</tr>
+	<% session[:sorted_priorities].each do |key, val| %>
+		<% a = key.split("@")[1] %>
+		<%= "<tr><td><strong>#{a}</strong></td>" %>
+		<% session[:options].each do |key2, val2| %>
+			<% session[:final_calc].each do | sub_array | %>
+				<% if sub_array[0] == a && sub_array[1] == val2 %>
+				<%=	"<td>#{sub_array[2]}</td>" %>
+				<% end %>
+			<% end %>
+		<% end %>
+	</tr>
+	<% end %>
+	<tr>
+		<td><strong>Final Score</strong></td>
+		<% session[:options].each do |key, val| %>
+			<% session[:final_scores].each do |sub_array| %>
+				<% if sub_array[0] == val %>
+					<%= "<td>#{sub_array[1]}</td>" %>
+				<% end %>
+			<% end %>
+		<% end %>
+	</tr>
+</table>
+</div>
+
+* Note:  The individual scores are based on your priority rankings and how your options were ranked within those priorities.  The final score is meant to give an indicator of how all these factors come together and provide you a starting point for sorting through some of the noise!  
